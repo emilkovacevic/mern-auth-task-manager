@@ -11,3 +11,14 @@ You can create, edit and delete users and tasks based on user roles. You can als
 - Employee can create a new tasks and edit assigned task.
 - Login Required to enter the app, default accout upon registration = Employee
 - Public landing page for Visitors
+
+
+## To run locally:
+
+open terminal for client & server and run simultaneously on each
+``` 
+npm i
+npm run dev
+```
+
+
