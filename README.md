@@ -15,7 +15,8 @@ You can create, edit and delete users and tasks based on user roles. You can als
 
 ## To run locally:
 
-open terminal for client & server and run simultaneously on each
+1. Connect to your MongoDB in the .env file
+2. open terminal for client & server and run simultaneously on each
 ``` 
 npm i
 npm run dev
