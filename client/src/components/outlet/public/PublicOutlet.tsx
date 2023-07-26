@@ -1,15 +1,15 @@
 import { Outlet } from 'react-router-dom'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
-import { OutletWrapper } from '../outlet_styles'
 
-const PublicOutlet = ({ theme, handleThemeSwitch }:ThemeProps) => {
+const PublicOutlet = () => {
     return (
-        <OutletWrapper>
-            <Navbar theme={theme} handleThemeSwitch={ handleThemeSwitch} />
+        <div
+            className='flex flex-col justify-between min-h-screen' >
+            <Navbar />
             <Outlet />
             <Footer />
-        </OutletWrapper>
+        </div>
     )
 }
 

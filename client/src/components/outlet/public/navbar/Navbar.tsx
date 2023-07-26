@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Header, Nav } from './navbar_styles'
 import { useSendLogoutMutation } from '../../../../features/auth/authApiSlice'
 import { useSelector } from 'react-redux'
 import { selectCurrentToken } from '../../../../features/auth/authSlice'
+import ThemeButton from '../../../ThemeButton'
 
-const Navbar = ({ theme, handleThemeSwitch }:ThemeProps) => {
+const Navbar = () => {
 
     const isLoggedIn = useSelector(selectCurrentToken)
 
@@ -32,27 +32,33 @@ const Navbar = ({ theme, handleThemeSwitch }:ThemeProps) => {
     }, [])
 
     return (
-        <Header
-            scrolled={scrolled}
-        >
-            <Link to='/'>TaskMaster</Link>
-            <Nav>
-                {isLoading ? <span>Logging out...</span> :
-                    isLoggedIn ?
+        <div className={`${ scrolled ? 'bg-primary' : 'bg-base-200'} navbar sticky top-0 z-30`}>
+            <div className="flex-1">
+                <Link
+                    className="btn btn-ghost normal-case text-xl"
+                    to='/'>TaskMaster</Link>
+            </div>
+            <div className="flex-none">
+                <ul className="menu menu-horizontal px-1">
+                    {isLoading ? <span>Logging out...</span> :
+                        isLoggedIn ?
                 
-                        <button onClick={sendLogout}>logout</button>
-                        :
-                        <>
-                            <Link to='/login'>Login</Link>
-                            <Link to='/register'>Join</Link>
-                        </>
-                }
-                
-                <button onClick={handleThemeSwitch}>
-                    {theme === 'dark' ? '🌞' : '🌙'}
-                </button>
-            </Nav>
-        </Header>
+                            <button 
+                                className='btn btn-secondary'
+                                onClick={sendLogout}>logout</button>
+                            :
+                            <>
+                                <li>
+                                    <Link to='/login'>Login</Link></li>
+                                <li>
+                                    <Link to='/register'>Join</Link>
+                                </li>
+                            </>
+                    }
+                    <ThemeButton />
+                </ul>
+            </div>
+        </div>
     )
 }
 

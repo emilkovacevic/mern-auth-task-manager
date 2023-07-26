@@ -1,10 +1,8 @@
 import { useState } from 'react'
-import { Card } from '../../global-styles/component_styles'
-import { Main } from '../../global-styles/htmlTag_styles'
-import FormContainer from './auth_styles'
 import { useNavigate } from 'react-router-dom'
 
 import { useRegisterMutation } from './authApiSlice'
+import Card from '../../components/Card'
 
 const Register = () => {
 
@@ -82,80 +80,91 @@ const Register = () => {
     }
     if(isLoading) return <p>Loading...</p>
     return (
-        <Main>
-            <FormContainer>
-                <Card>
-                    <form onSubmit={handleSubmit}>
-                        { errors.network && <p aria-live="assertive"  className='warning'>{errors.network}</p>}
-                        <h1>Join TaskMaster</h1>
-                        <div>
-                            <label
-                                aria-label="Username"
-                                htmlFor="username">Username</label>
-                            <input 
-                                type="text"
-                                id="username"
-                                value={formData.username}   
-                                onChange={(e) => setFormData({ ...formData, username: e.target.value })}    
-                                minLength={3}
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label
-                                aria-label="Email"
-                                htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                required
-                            />
-                            {errors.email && <p aria-live="assertive" className='warning'>{errors.email}</p>}
-                        </div>
-                        <div>
-                            <label
-                                aria-label="Password"
-                                htmlFor="password">Password</label>
-                            <input
-                                type={showPassword ? 'text' : 'password'}
-                                id="password"
-                                value={formData.password}
-                                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                minLength={6}
-                                required
-                            />
-                            {errors.password && <p aria-live="assertive" className='warning'>{errors.password}</p>}
-                        </div>
-                        <div>
-                            <label
-                                aria-label="Confirm Password"
-                                htmlFor="confirmPassword">Confirm Password</label>
-                            <input
-                                type={showPassword ? 'text' : 'password'}
-                                id="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                                minLength={6}
-                                required
-                            />
-                            {errors.confirmPassword && <p aria-live="assertive" className='warning'>{errors.confirmPassword}</p>}
-                        </div>
-                        <div className='checkbox'>
-                            <label
-                                aria-label="Show password"
-                                htmlFor="show-password">Show password</label>
-                            <input
-                                checked={showPassword}
-                                onChange={(e) => setShowPassword(e.target.checked)}
-                                type="checkbox" id="show-password" />
-                        </div>
-                        <button type="submit">Register</button>
-                    </form>
-                </Card>
-            </FormContainer>
-        </Main>
+        <main>
+            <Card>
+                <form
+                    className="card-body"
+                    onSubmit={handleSubmit}>
+                    { errors.network && <p aria-live="assertive"  className='warning'>{errors.network}</p>}
+                    <h1>Join TaskMaster</h1>
+                    <div
+                        className="form-control"
+                    >
+                        <label
+                            aria-label="Username"
+                            htmlFor="username">Username</label>
+                        <input 
+                            type="text"
+                            id="username"
+                            value={formData.username}   
+                            onChange={(e) => setFormData({ ...formData, username: e.target.value })}    
+                            minLength={3}
+                            required
+                        />
+                    </div>
+                    <div
+                        className="form-control"
+                    >
+                        <label
+                            aria-label="Email"
+                            htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            required
+                        />
+                        {errors.email && <p aria-live="assertive" className='warning'>{errors.email}</p>}
+                    </div>
+                    <div
+                        className="form-control"
+                    >
+                        <label
+                            aria-label="Password"
+                            htmlFor="password">Password</label>
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            id="password"
+                            value={formData.password}
+                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                            minLength={6}
+                            required
+                        />
+                        {errors.password && <p aria-live="assertive" className='warning'>{errors.password}</p>}
+                    </div>
+                    <div
+                        className="form-control"
+                    >
+                        <label
+                            aria-label="Confirm Password"
+                            htmlFor="confirmPassword">Confirm Password</label>
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            id="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                            minLength={6}
+                            required
+                        />
+                        {errors.confirmPassword && <p aria-live="assertive" className='warning'>{errors.confirmPassword}</p>}
+                    </div>
+                    <div 
+                        className='flex align-middle mt-4'
+                    >
+                        <label htmlFor="show-password">show password</label>
+                        <input
+                            className="toggle ml-8"
+                            checked={showPassword}
+                            onChange={(e) => setShowPassword(e.target.checked)}
+                            type="checkbox" id="show-password" />
+                    </div>
+                    <button
+                        className="btn btn-primary"
+                        type="submit">Register</button>
+                </form>
+            </Card>
+        </main>
     )
 }
 

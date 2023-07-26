@@ -9,11 +9,10 @@ import RequireAuth from './features/auth/RequireAuth'
 import { ROLES } from './config/Roles'
 import Account from './features/users/Account'
 
-function App({ theme, handleThemeSwitch }: ThemeProps) {
+function App() {
     return (
         <Routes>
-            <Route path="/" element={<PublicOutlet
-                theme={theme} handleThemeSwitch={handleThemeSwitch} />}>
+            <Route path="/" element={<PublicOutlet />}>
                 <Route index element={<Index />} />
                 <Route path='register' element={<Register />} />
                 <Route path='login' element={<Login />} />

@@ -1,20 +1,18 @@
 import { Outlet } from 'react-router-dom'
-import { HorizontalLayout } from '../../../global-styles/component_styles'
-import { OutletWrapper } from '../outlet_styles'
-import Listing from './listing-sidebar/Listing'
-import Menu from './menu-sidebar/Menu'
+import AsideMenu from './menu-sidebar/AsideMenu'
 import Navbar from './navbar/Navbar'
 
 const ProtectedOutlet = () => {
     return (
-        <OutletWrapper>
-            <Navbar/>
-            <HorizontalLayout className='dashboard'>
-                <Menu/>
+        <div
+            className='transition-all duration-300'
+        >
+            <Navbar />
+            <div className='md:flex fixed w-full bg-base-200'>
+                <AsideMenu />
                 <Outlet />
-                <Listing />
-            </HorizontalLayout>
-        </OutletWrapper>
+            </div>
+        </div>
     )
 }
 
